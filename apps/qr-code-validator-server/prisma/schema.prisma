@@ -1,0 +1,16 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DB_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model QrCode {
+  createdAt DateTime @default(now())
+  id        String   @id @default(cuid())
+  scanCount Int?
+  updatedAt DateTime @updatedAt
+  value     String?
+}
